@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    tools:context=".SelectHospitalActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/img_8" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Select Hospital"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Search hospitals..."
+        android:background="@android:color/white"
+        android:padding="12dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hospital1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/hospitalName1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="General City Hospital"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hospitalType1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="General"
+                android:background="#E0E0E0"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/hospitalLocation1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hospitalName1"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@android:drawable/ic_dialog_map"
+                android:drawablePadding="8dp"
+                android:text="New York, NY" />
+
+            <TextView
+                android:id="@+id/hospitalBeds1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hospitalLocation1"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@android:drawable/ic_dialog_info"
+                android:drawablePadding="8dp"
+                android:text="450 Beds" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hospital2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/hospitalName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="St. Mary's Medical Center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hospitalType2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Private"
+                android:background="#E0E0E0"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/hospitalLocation2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hospitalName2"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@android:drawable/ic_dialog_map"
+                android:drawablePadding="8dp"
+                android:text="San Francisco, CA" />
+
+            <TextView
+                android:id="@+id/hospitalBeds2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hospitalLocation2"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@android:drawable/ic_dialog_info"
+                android:drawablePadding="8dp"
+                android:text="320 Beds" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hospital3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/hospitalName3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Children's Memorial"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hospitalType3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pediatric"
+                android:background="#E0E0E0"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/hospitalLocation3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hospitalName3"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@android:drawable/ic_dialog_map"
+                android:drawablePadding="8dp"
+                android:text="Chicago, IL" />
+
+            <TextView
+                android:id="@+id/hospitalBeds3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hospitalLocation3"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@android:drawable/ic_dialog_info"
+                android:drawablePadding="8dp"
+                android:text="280 Beds" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hospital4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/hospitalName4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="University Research Hospital"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hospitalType4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teaching"
+                android:background="#E0E0E0"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/hospitalLocation4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hospitalName4"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@android:drawable/ic_dialog_map"
+                android:drawablePadding="8dp"
+                android:text="Boston, MA" />
+
+            <TextView
+                android:id="@+id/hospitalBeds4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hospitalLocation4"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@android:drawable/ic_dialog_info"
+                android:drawablePadding="8dp"
+                android:text="600 Beds" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

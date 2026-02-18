@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Final">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SecondActivity" />
+        <activity android:name=".ThirdActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".SelectRoleActivity" />
+        <activity android:name=".SelectHospitalActivity" />
+        <activity android:name=".SelectDepartmentActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".PatientsActivity" />
+        <activity android:name=".PatientDetailsActivity" />
+        <activity android:name=".NotificationsActivity" />
+        <activity android:name=".AddPatientActivity" />
+        <activity android:name=".MonitorActivity" />
+        <activity android:name=".AlertsOverviewActivity" />
+        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".VerifyOtpActivity" />
+        <activity android:name=".ResetPasswordActivity" />
+        <activity android:name=".ViewAlertsActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".ProfileSettingsActivity" />
+        <activity android:name=".AlertSettingsActivity" />
+        <activity android:name=".SecurityPrivacyActivity" />
+        <activity android:name=".AppearanceActivity" />
+        <activity android:name=".HelpSupportActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".MonitorBedActivity" />
+        <activity android:name=".AIPredictiveAnalyticsActivity" />
+        <activity android:name=".SmartAlarmAiActivity" />
+    </application>
+
+</manifest>
