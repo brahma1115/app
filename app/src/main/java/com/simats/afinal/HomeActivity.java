@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         alertsCard.setOnClickListener(alertsListener);
         predictiveAlertsCard.setOnClickListener(predictiveListener);
         falseAlarmCard.setOnClickListener(falseAlarmListener);
-
+    //
         CardView recentAlertCard1 = findViewById(R.id.recentAlertCard1);
         recentAlertCard1.setOnClickListener(v -> openPatientDetails("John Doe", "ICU-04", "Critical", "High Pressure", "B402", "2024-07-28", "Dr. Smith", "120 bpm", "92%"));
 
