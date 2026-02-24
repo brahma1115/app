@@ -47,7 +47,9 @@
         <activity android:name=".AboutActivity" />
         <activity android:name=".MonitorBedActivity" />
         <activity android:name=".AIPredictiveAnalyticsActivity" />
-        <activity android:name=".SmartAlarmAiActivity" />
+        <activity android:name=".SmartAlarmAIActivity" />
+        <activity android:name=".AiRiskAssessmentActivity" />
+        <activity android:name=".AiAssistantActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="patients_array">
+        <item>John Doe (ICU-01)</item>
+        <item>Emily Davis (ICU-02)</item>
+        <item>Robert Wilson (ICU-03)</item>
+    </string-array>
+</resources>
