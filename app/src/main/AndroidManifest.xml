@@ -37,7 +37,7 @@
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".VerifyOtpActivity" />
         <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".ViewAlertsActivity" />
+        <activity android:name="com.simats.afinal.ViewAlertsActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ProfileSettingsActivity" />
         <activity android:name=".AlertSettingsActivity" />
@@ -50,6 +50,10 @@
         <activity android:name=".SmartAlarmAIActivity" />
         <activity android:name=".AiRiskAssessmentActivity" />
         <activity android:name=".AiAssistantActivity" />
+        <activity android:name=".VitalsHistoryActivity" />
+        <activity android:name=".VentilatorSettingsActivity" />
+        <activity android:name=".AnomalyDetectionActivity" />
+        <activity android:name=".PatientHistoryActivity" />
     </application>
 
 </manifest>

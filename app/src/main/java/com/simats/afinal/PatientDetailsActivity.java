@@ -3,10 +3,12 @@ package com.simats.afinal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class PatientDetailsActivity extends AppCompatActivity {
 
@@ -35,6 +37,42 @@ public class PatientDetailsActivity extends AppCompatActivity {
                 intent.putExtra("bed", getIntent().getStringExtra("bed"));
                 intent.putExtra("admission", getIntent().getStringExtra("admission"));
                 intent.putExtra("physician", getIntent().getStringExtra("physician"));
+                startActivity(intent);
+            }
+        });
+
+        Button viewVitalsButton = findViewById(R.id.viewVitalsButton);
+        viewVitalsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDetailsActivity.this, VitalsHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button ventilatorSettingsButton = findViewById(R.id.ventilatorSettingsButton);
+        ventilatorSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDetailsActivity.this, VentilatorSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        CardView aiAnomalyCard = findViewById(R.id.ai_anomaly_card);
+        aiAnomalyCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDetailsActivity.this, AnomalyDetectionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        CardView patientHistoryCard = findViewById(R.id.patient_history_card);
+        patientHistoryCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDetailsActivity.this, PatientHistoryActivity.class);
                 startActivity(intent);
             }
         });
