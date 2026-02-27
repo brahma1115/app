@@ -54,6 +54,8 @@
         <activity android:name=".VentilatorSettingsActivity" />
         <activity android:name=".AnomalyDetectionActivity" />
         <activity android:name=".PatientHistoryActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ReportsAndDocumentsActivity" />
     </application>
 
 </manifest>

@@ -26,8 +26,9 @@ public class SettingsActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // This will take the user back to the previously opened screen
-                finish();
+                Intent intent = new Intent(SettingsActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish(); // Finish current activity to avoid stacking
             }
         });
 

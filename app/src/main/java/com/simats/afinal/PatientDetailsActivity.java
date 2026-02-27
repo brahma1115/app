@@ -7,105 +7,106 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 public class PatientDetailsActivity extends AppCompatActivity {
+
+    private static final int EDIT_PATIENT_REQUEST = 2;
+    private TextView patientNameTextView, patientIdTextView, patientStatusTextView, diagnosisValue, bedValue, admissionValue, physicianValue, heartRateValue, spo2Value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
 
+        // Initialize TextViews
+        patientNameTextView = findViewById(R.id.patientName);
+        patientIdTextView = findViewById(R.id.patientId);
+        patientStatusTextView = findViewById(R.id.patientStatus);
+        diagnosisValue = findViewById(R.id.diagnosisValue);
+        bedValue = findViewById(R.id.bedValue);
+        admissionValue = findViewById(R.id.admissionValue);
+        physicianValue = findViewById(R.id.physicianValue);
+        heartRateValue = findViewById(R.id.heartRateValue);
+        spo2Value = findViewById(R.id.spo2Value);
+
+        // Load initial data
+        updateUI(getIntent());
+
         ImageView backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        backButton.setOnClickListener(v -> finish());
 
         ImageView editButton = findViewById(R.id.editButton);
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientDetailsActivity.this, AddPatientActivity.class);
-                intent.putExtra("patientName", getIntent().getStringExtra("patientName"));
-                intent.putExtra("patientId", getIntent().getStringExtra("patientId"));
-                intent.putExtra("patientStatus", getIntent().getStringExtra("patientStatus"));
-                intent.putExtra("diagnosis", getIntent().getStringExtra("diagnosis"));
-                intent.putExtra("bed", getIntent().getStringExtra("bed"));
-                intent.putExtra("admission", getIntent().getStringExtra("admission"));
-                intent.putExtra("physician", getIntent().getStringExtra("physician"));
-                startActivity(intent);
-            }
+        editButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDetailsActivity.this, AddPatientActivity.class);
+            intent.putExtra("patientName", patientNameTextView.getText().toString());
+            intent.putExtra("patientId", patientIdTextView.getText().toString());
+            intent.putExtra("patientStatus", patientStatusTextView.getText().toString());
+            intent.putExtra("diagnosis", diagnosisValue.getText().toString());
+            intent.putExtra("bed", bedValue.getText().toString());
+            intent.putExtra("admission", admissionValue.getText().toString());
+            intent.putExtra("physician", physicianValue.getText().toString());
+            intent.putExtra("isEditing", true); // Flag to tell AddPatientActivity we are editing
+            startActivityForResult(intent, EDIT_PATIENT_REQUEST);
         });
 
         Button viewVitalsButton = findViewById(R.id.viewVitalsButton);
-        viewVitalsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientDetailsActivity.this, VitalsHistoryActivity.class);
-                startActivity(intent);
-            }
+        viewVitalsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDetailsActivity.this, VitalsHistoryActivity.class);
+            startActivity(intent);
         });
 
         Button ventilatorSettingsButton = findViewById(R.id.ventilatorSettingsButton);
-        ventilatorSettingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientDetailsActivity.this, VentilatorSettingsActivity.class);
-                startActivity(intent);
-            }
+        ventilatorSettingsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDetailsActivity.this, VentilatorSettingsActivity.class);
+            startActivity(intent);
         });
 
         CardView aiAnomalyCard = findViewById(R.id.ai_anomaly_card);
-        aiAnomalyCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientDetailsActivity.this, AnomalyDetectionActivity.class);
-                startActivity(intent);
-            }
+        aiAnomalyCard.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDetailsActivity.this, AnomalyDetectionActivity.class);
+            startActivity(intent);
         });
 
         CardView patientHistoryCard = findViewById(R.id.patient_history_card);
-        patientHistoryCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientDetailsActivity.this, PatientHistoryActivity.class);
-                startActivity(intent);
-            }
+        patientHistoryCard.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDetailsActivity.this, PatientHistoryActivity.class);
+            startActivity(intent);
         });
 
-        Intent intent = getIntent();
-        String patientName = intent.getStringExtra("patientName");
-        String patientId = intent.getStringExtra("patientId");
-        String patientStatus = intent.getStringExtra("patientStatus");
-        String diagnosis = intent.getStringExtra("diagnosis");
-        String bed = intent.getStringExtra("bed");
-        String admission = intent.getStringExtra("admission");
-        String physician = intent.getStringExtra("physician");
-        String heartRate = intent.getStringExtra("heartRate");
-        String spo2 = intent.getStringExtra("spo2");
+        CardView reportsAndNotesCard = findViewById(R.id.reports_and_notes_card);
+        reportsAndNotesCard.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDetailsActivity.this, ReportsAndDocumentsActivity.class);
+            startActivity(intent);
+        });
+    }
 
-        TextView patientNameTextView = findViewById(R.id.patientName);
-        TextView patientIdTextView = findViewById(R.id.patientId);
-        TextView patientStatusTextView = findViewById(R.id.patientStatus);
-        TextView diagnosisValue = findViewById(R.id.diagnosisValue);
-        TextView bedValue = findViewById(R.id.bedValue);
-        TextView admissionValue = findViewById(R.id.admissionValue);
-        TextView physicianValue = findViewById(R.id.physicianValue);
-        TextView heartRateValue = findViewById(R.id.heartRateValue);
-        TextView spo2Value = findViewById(R.id.spo2Value);
+    private void updateUI(Intent intent) {
+        if (intent != null) {
+            patientNameTextView.setText(intent.getStringExtra("patientName"));
+            patientIdTextView.setText(intent.getStringExtra("patientId"));
+            patientStatusTextView.setText(intent.getStringExtra("patientStatus"));
+            diagnosisValue.setText(intent.getStringExtra("diagnosis"));
+            bedValue.setText(intent.getStringExtra("bed"));
+            admissionValue.setText(intent.getStringExtra("admission"));
+            physicianValue.setText(intent.getStringExtra("physician"));
+            
+            // Set defaults if null (for heart rate and spo2 which might not be in edit intent)
+            String hr = intent.getStringExtra("heartRate");
+            String s2 = intent.getStringExtra("spo2");
+            if (hr != null) heartRateValue.setText(hr);
+            if (s2 != null) spo2Value.setText(s2);
+        }
+    }
 
-        patientNameTextView.setText(patientName);
-        patientIdTextView.setText(patientId);
-        patientStatusTextView.setText(patientStatus);
-        diagnosisValue.setText(diagnosis);
-        bedValue.setText(bed);
-        admissionValue.setText(admission);
-        physicianValue.setText(physician);
-        heartRateValue.setText(heartRate);
-        spo2Value.setText(spo2);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == EDIT_PATIENT_REQUEST && resultCode == RESULT_OK && data != null) {
+            // Update UI with new data returned from AddPatientActivity
+            updateUI(data);
+        }
     }
 }

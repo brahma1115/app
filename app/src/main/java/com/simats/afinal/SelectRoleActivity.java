@@ -1,6 +1,7 @@
 package com.simats.afinal;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -19,11 +20,19 @@ public class SelectRoleActivity extends AppCompatActivity {
         CardView therapistCard = findViewById(R.id.therapistCard);
         CardView adminCard = findViewById(R.id.adminCard);
 
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SelectRoleActivity.this, SelectHospitalActivity.class));
-            }
+        View.OnClickListener listener = v -> {
+            String role = "";
+            if (v.getId() == R.id.doctorCard) role = "Doctor / Physician";
+            else if (v.getId() == R.id.nurseCard) role = "Nurse";
+            else if (v.getId() == R.id.therapistCard) role = "Respiratory Therapist";
+            else if (v.getId() == R.id.adminCard) role = "Administrator";
+
+            SharedPreferences sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("role", role);
+            editor.apply();
+
+            startActivity(new Intent(SelectRoleActivity.this, SelectHospitalActivity.class));
         };
 
         doctorCard.setOnClickListener(listener);

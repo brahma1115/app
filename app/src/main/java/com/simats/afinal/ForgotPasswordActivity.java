@@ -28,6 +28,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
+                finish();
             }
         });
 
@@ -35,19 +36,30 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
+                finish();
             }
         });
 
-        Button sendLinkButton = findViewById(R.id.sendLinkButton);
-        sendLinkButton.setOnClickListener(new View.OnClickListener() {
+        Button sendOtpButton = findViewById(R.id.sendLinkButton);
+        sendOtpButton.setText("Send OTP"); // User adigina vidham ga button text
+        
+        sendOtpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = emailEditText.getText().toString().trim();
+                
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(ForgotPasswordActivity.this, "Email cannot be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ForgotPasswordActivity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
+                } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    Toast.makeText(ForgotPasswordActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
                 } else {
-                    startActivity(new Intent(ForgotPasswordActivity.this, VerifyOtpActivity.class));
+                    // Simulating OTP Sent functionality
+                    Toast.makeText(ForgotPasswordActivity.this, "OTP sent successfully to " + email, Toast.LENGTH_LONG).show();
+                    
+                    // Navigating to OTP Verification screen
+                    Intent intent = new Intent(ForgotPasswordActivity.this, VerifyOtpActivity.class);
+                    intent.putExtra("userEmail", email); // Passing email to show on next screen
+                    startActivity(intent);
                 }
             }
         });

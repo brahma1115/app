@@ -29,7 +29,6 @@ public class PatientsActivity extends AppCompatActivity {
 
     private static final int ADD_PATIENT_REQUEST = 1;
 
-    // Static list to hold patient data
     public static List<Patient> patients = new ArrayList<>();
     private String currentFilter = "All";
     private String currentSearchQuery = "";
@@ -40,11 +39,10 @@ public class PatientsActivity extends AppCompatActivity {
     ImageView addPatientButton;
     SearchView searchView;
 
-    // Patient Model Class (Inner class)
     public static class Patient {
-        String patientName, patientId, patientStatus, diagnosis, bed, admission, physician, heartRate, spo2;
+        String patientName, patientId, patientStatus, diagnosis, bed, admission, physician, heartRate, spo2, gender, age;
 
-        public Patient(String patientName, String patientId, String patientStatus, String diagnosis, String bed, String admission, String physician, String heartRate, String spo2) {
+        public Patient(String patientName, String patientId, String patientStatus, String diagnosis, String bed, String admission, String physician, String heartRate, String spo2, String gender, String age) {
             this.patientName = patientName;
             this.patientId = patientId;
             this.patientStatus = patientStatus;
@@ -54,6 +52,8 @@ public class PatientsActivity extends AppCompatActivity {
             this.physician = physician;
             this.heartRate = heartRate;
             this.spo2 = spo2;
+            this.gender = gender;
+            this.age = age;
         }
     }
 
@@ -62,13 +62,29 @@ public class PatientsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patients);
 
-        // Initialize static list with default patients only once
         if (patients.isEmpty()) {
-            patients.add(new Patient("John Doe", "ID: P001 • 65y", "Critical", "ARDS", "ICU-01", "Oct 12, 2023", "Dr. Wilson", "102 bpm", "94%"));
-            patients.add(new Patient("Jane Smith", "ID: P002 • 54y", "Warning", "COPD", "ICU-02", "Oct 15, 2023", "Dr. Adams", "90 bpm", "96%"));
-            patients.add(new Patient("Robert Johnson", "ID: P003 • 72y", "Normal", "Post-Op", "ICU-03", "Oct 18, 2023", "Dr. Miller", "80 bpm", "98%"));
-            patients.add(new Patient("Emily Davis", "ID: P004 • 45y", "Normal", "Pneumonia", "ICU-04", "Oct 20, 2023", "Dr. Clark", "85 bpm", "97%"));
-            patients.add(new Patient("Michael Brown", "ID: P005 • 58y", "Warning", "COVID-19", "ICU-05", "Oct 22, 2023", "Dr. Lewis", "95 bpm", "95%"));
+            // Updated with Indian Names
+            patients.add(new Patient("Rajesh Kumar", "P001", "Critical", "Severe ARDS", "ICU-01", "Oct 12, 2023", "Dr. Wilson", "102 bpm", "94%", "Male", "65 y"));
+            patients.add(new Patient("Priya Sharma", "P002", "Warning", "Acute COPD", "ICU-02", "Oct 15, 2023", "Dr. Adams", "90 bpm", "96%", "Female", "54 y"));
+            patients.add(new Patient("Amit Patel", "P003", "Normal", "Post-Op Recovery", "ICU-03", "Oct 18, 2023", "Dr. Miller", "80 bpm", "98%", "Male", "72 y"));
+            patients.add(new Patient("Sneha Reddy", "P004", "Normal", "Mild Pneumonia", "ICU-04", "Oct 20, 2023", "Dr. Clark", "85 bpm", "97%", "Female", "45 y"));
+            patients.add(new Patient("Vikram Singh", "P005", "Warning", "COVID-19", "ICU-05", "Oct 22, 2023", "Dr. Lewis", "95 bpm", "95%", "Male", "58 y"));
+            patients.add(new Patient("Anjali Gupta", "P006", "Normal", "Observation", "Ward-10", "Oct 24, 2023", "Dr. Brown", "78 bpm", "99%", "Female", "32 y"));
+            patients.add(new Patient("Rahul Verma", "P007", "Critical", "Septic Shock", "ICU-06", "Oct 25, 2023", "Dr. White", "120 bpm", "91%", "Male", "60 y"));
+            patients.add(new Patient("Sunita Rao", "P008", "Warning", "Heart Failure", "CCU-02", "Oct 26, 2023", "Dr. Davis", "88 bpm", "93%", "Female", "68 y"));
+            patients.add(new Patient("Sanjay Iyer", "P009", "Normal", "Routine Pre-Op", "Ward-05", "Oct 27, 2023", "Dr. Martinez", "72 bpm", "98%", "Male", "40 y"));
+            patients.add(new Patient("Deepa Nair", "P010", "Critical", "Trauma", "ICU-07", "Oct 28, 2023", "Dr. Thompson", "110 bpm", "92%", "Female", "29 y"));
+
+            patients.add(new Patient("Thomas Chacko", "P011", "Normal", "General Checkup", "Ward-02", "Oct 29, 2023", "Dr. Moore", "70 bpm", "99%", "Male", "50 y"));
+            patients.add(new Patient("Kavita Joshi", "P012", "Warning", "Hypertension", "CCU-03", "Oct 30, 2023", "Dr. Taylor", "92 bpm", "95%", "Female", "62 y"));
+            patients.add(new Patient("Arjun Deshmukh", "P013", "Critical", "Renal Failure", "ICU-08", "Oct 31, 2023", "Dr. Anderson", "105 bpm", "90%", "Male", "55 y"));
+            patients.add(new Patient("Meera Krishnan", "P014", "Normal", "Stable", "Ward-08", "Nov 01, 2023", "Dr. Thomas", "75 bpm", "98%", "Female", "48 y"));
+            patients.add(new Patient("Daniel D'Souza", "P015", "Warning", "Asthma", "Ward-04", "Nov 02, 2023", "Dr. Jackson", "88 bpm", "94%", "Male", "35 y"));
+            patients.add(new Patient("Lakshmi Devi", "P016", "Critical", "Cardiac Arrest", "ICU-09", "Nov 03, 2023", "Dr. Harris", "130 bpm", "88%", "Female", "70 y"));
+            patients.add(new Patient("Manish Malhotra", "P017", "Normal", "Observation", "Ward-06", "Nov 04, 2023", "Dr. Nelson", "82 bpm", "97%", "Male", "42 y"));
+            patients.add(new Patient("Swati Prabhu", "P018", "Warning", "Infection", "Ward-01", "Nov 05, 2023", "Dr. King", "98 bpm", "93%", "Female", "52 y"));
+            patients.add(new Patient("Gaurav Kapoor", "P019", "Critical", "Pneumothorax", "ICU-10", "Nov 06, 2023", "Dr. Wright", "115 bpm", "89%", "Male", "67 y"));
+            patients.add(new Patient("Pooja Hegde", "P020", "Normal", "Recovery", "Ward-03", "Nov 07, 2023", "Dr. Lopez", "76 bpm", "98%", "Female", "44 y"));
         }
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -154,77 +170,51 @@ public class PatientsActivity extends AppCompatActivity {
             View patientCardView = inflater.inflate(R.layout.patient_card_item, patientCardsContainer, false);
 
             TextView nameTextView = patientCardView.findViewById(R.id.patientName);
-            TextView idTextView = patientCardView.findViewById(R.id.patientDetails);
-            TextView diagnosisTextView = patientCardView.findViewById(R.id.patientCondition);
+            TextView detailsTextView = patientCardView.findViewById(R.id.patientDetails);
             TextView bedTextView = patientCardView.findViewById(R.id.patientBed);
             TextView statusTextView = patientCardView.findViewById(R.id.patientStatus);
+            TextView conditionTextView = patientCardView.findViewById(R.id.patientCondition);
+            ImageView profileImageView = patientCardView.findViewById(R.id.patientIcon);
 
             nameTextView.setText(patient.patientName);
-            idTextView.setText(patient.patientId);
-            diagnosisTextView.setText(patient.diagnosis);
+            detailsTextView.setText("ID: " + patient.patientId + "  •  " + patient.age);
             bedTextView.setText("Bed: " + patient.bed);
-            statusTextView.setText(patient.patientStatus);
+            statusTextView.setText("● " + patient.patientStatus);
+            conditionTextView.setText(patient.diagnosis);
 
-            Drawable statusDrawable;
-            int statusColor;
+            if ("Female".equalsIgnoreCase(patient.gender)) {
+                profileImageView.setImageResource(R.drawable.female);
+            } else {
+                profileImageView.setImageResource(R.drawable.male);
+            }
 
             if ("Critical".equalsIgnoreCase(patient.patientStatus)) {
-                statusDrawable = ContextCompat.getDrawable(this, R.drawable.dot_critical);
-                statusColor = ContextCompat.getColor(this, R.color.critical_red);
+                statusTextView.setTextColor(ContextCompat.getColor(this, R.color.critical_red));
                 statusTextView.setBackgroundResource(R.drawable.status_critical_background);
             } else if ("Warning".equalsIgnoreCase(patient.patientStatus)) {
-                statusDrawable = ContextCompat.getDrawable(this, R.drawable.dot_warning);
-                statusColor = ContextCompat.getColor(this, R.color.warning_orange);
+                statusTextView.setTextColor(ContextCompat.getColor(this, R.color.warning_orange));
                 statusTextView.setBackgroundResource(R.drawable.status_warning_background);
-            } else { // Normal or Stable
-                statusDrawable = ContextCompat.getDrawable(this, R.drawable.dot_normal);
-                statusColor = ContextCompat.getColor(this, R.color.normal_green);
+            } else {
+                statusTextView.setTextColor(ContextCompat.getColor(this, R.color.normal_green));
                 statusTextView.setBackgroundResource(R.drawable.status_normal_background);
             }
 
-            if(statusDrawable != null) {
-                DrawableCompat.setTint(statusDrawable, statusColor);
-                statusTextView.setCompoundDrawablesWithIntrinsicBounds(statusDrawable, null, null, null);
-            }
-            statusTextView.setTextColor(statusColor);
-
-            patientCardView.setOnClickListener(v -> openPatientDetails(patient.patientName, patient.patientId, patient.patientStatus, patient.diagnosis, patient.bed, patient.admission, patient.physician, patient.heartRate, patient.spo2));
+            patientCardView.setOnClickListener(v -> openPatientDetails(patient));
             patientCardsContainer.addView(patientCardView);
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ADD_PATIENT_REQUEST && resultCode == RESULT_OK && data != null) {
-            String patientName = data.getStringExtra("patientName");
-            String patientId = data.getStringExtra("patientId");
-            String diagnosis = data.getStringExtra("diagnosis");
-            String bed = data.getStringExtra("bed");
-            String admission = data.getStringExtra("admission");
-            String physician = data.getStringExtra("physician");
-            String patientStatus = data.getStringExtra("patientStatus");
-
-            Patient newPatient = new Patient(patientName, patientId, patientStatus, diagnosis, bed, admission, physician, "N/A", "N/A");
-            patients.add(newPatient);
-
-            applyFilters();
-
-            Toast.makeText(this, "Patient " + patientName + " saved", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void openPatientDetails(String name, String id, String status, String diagnosis, String bed, String admission, String physician, String heartRate, String spo2) {
+    private void openPatientDetails(Patient patient) {
         Intent intent = new Intent(this, PatientDetailsActivity.class);
-        intent.putExtra("patientName", name);
-        intent.putExtra("patientId", id);
-        intent.putExtra("patientStatus", status);
-        intent.putExtra("diagnosis", diagnosis);
-        intent.putExtra("bed", bed);
-        intent.putExtra("admission", admission);
-        intent.putExtra("physician", physician);
-        intent.putExtra("heartRate", heartRate);
-        intent.putExtra("spo2", spo2);
+        intent.putExtra("patientName", patient.patientName);
+        intent.putExtra("patientId", "ID: " + patient.patientId + " • " + patient.age + " • " + patient.gender);
+        intent.putExtra("patientStatus", patient.patientStatus);
+        intent.putExtra("diagnosis", patient.diagnosis);
+        intent.putExtra("bed", patient.bed);
+        intent.putExtra("admission", patient.admission);
+        intent.putExtra("physician", patient.physician);
+        intent.putExtra("heartRate", patient.heartRate);
+        intent.putExtra("spo2", patient.spo2);
         startActivity(intent);
     }
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -19,6 +20,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Find all the views
         ImageView notificationButton = findViewById(R.id.notificationButton);
+        TextView userInitials = findViewById(R.id.userInitials);
         CardView activePatientsCard = findViewById(R.id.activePatientsCard);
         CardView patientsCard = findViewById(R.id.patientsCard);
         CardView activeVentsCard = findViewById(R.id.activeVentsCard);
@@ -33,6 +35,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Set up listeners
         notificationButton.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, NotificationsActivity.class)));
+        userInitials.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, ProfileActivity.class)));
 
         View.OnClickListener patientsListener = v -> startActivity(new Intent(HomeActivity.this, PatientsActivity.class));
         activePatientsCard.setOnClickListener(patientsListener);

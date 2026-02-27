@@ -1,9 +1,10 @@
 package com.simats.afinal;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -15,33 +16,32 @@ public class SelectDepartmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_department);
 
-        ImageView backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SelectDepartmentActivity.this, SelectHospitalActivity.class));
-            }
-        });
+        findViewById(R.id.backButton).setOnClickListener(v -> finish());
 
-        CardView icuCard = findViewById(R.id.icuCard);
-        CardView nicuCard = findViewById(R.id.nicuCard);
-        CardView picuCard = findViewById(R.id.picuCard);
-        CardView ccuCard = findViewById(R.id.ccuCard);
-        CardView erCard = findViewById(R.id.erCard);
-        CardView wardCard = findViewById(R.id.wardCard);
+        View.OnClickListener listener = v -> {
+            String department = "";
+            if (v.getId() == R.id.icuCard) department = "ICU";
+            else if (v.getId() == R.id.nicuCard) department = "NICU";
+            else if (v.getId() == R.id.picuCard) department = "PICU";
+            else if (v.getId() == R.id.ccuCard) department = "CCU";
+            else if (v.getId() == R.id.erCard) department = "Emergency Room";
+            else if (v.getId() == R.id.wardCard) department = "General Ward";
 
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SelectDepartmentActivity.this, HomeActivity.class));
-            }
+            SharedPreferences sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("department", department);
+            editor.apply();
+
+            Intent intent = new Intent(SelectDepartmentActivity.this, HomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         };
 
-        icuCard.setOnClickListener(listener);
-        nicuCard.setOnClickListener(listener);
-        picuCard.setOnClickListener(listener);
-        ccuCard.setOnClickListener(listener);
-        erCard.setOnClickListener(listener);
-        wardCard.setOnClickListener(listener);
+        findViewById(R.id.icuCard).setOnClickListener(listener);
+        findViewById(R.id.nicuCard).setOnClickListener(listener);
+        findViewById(R.id.picuCard).setOnClickListener(listener);
+        findViewById(R.id.ccuCard).setOnClickListener(listener);
+        findViewById(R.id.erCard).setOnClickListener(listener);
+        findViewById(R.id.wardCard).setOnClickListener(listener);
     }
 }
