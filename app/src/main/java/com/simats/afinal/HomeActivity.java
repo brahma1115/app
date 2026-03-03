@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         activeVentsCard.setOnClickListener(monitorListener);
         monitorCard.setOnClickListener(monitorListener);
 
-        View.OnClickListener alertsListener = v -> startActivity(new Intent(HomeActivity.this, ViewAlertsActivity.class));
+        View.OnClickListener alertsListener = v -> startActivity(new Intent(HomeActivity.this, AlertsOverviewActivity.class));
         activeAlertsCard.setOnClickListener(alertsListener);
         alertsCard.setOnClickListener(alertsListener);
 
@@ -54,18 +54,44 @@ public class HomeActivity extends AppCompatActivity {
         highRiskCard.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, AiRiskAssessmentActivity.class)));
         aiAssistantCard.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, AiAssistantActivity.class)));
 
-        // Other listeners for recent alerts...
-        CardView recentAlertCard1 = findViewById(R.id.recentAlertCard1);
-        recentAlertCard1.setOnClickListener(v -> openPatientDetails("John Doe", "ICU-04", "Critical", "High Pressure", "B402", "2024-07-28", "Dr. Smith", "120 bpm", "92%"));
+        // Recent alert listeners
+        CardView recentAlertCard1 = findViewById(R.id.recentAlertCard1); // Critical: Rajesh Kumar
+        recentAlertCard1.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, CriticalAlertActivity.class);
+            intent.putExtra("patientName", "Rajesh Kumar");
+            intent.putExtra("bedId", "ICU-04");
+            intent.putExtra("alertType", "High Pressure");
+            startActivity(intent);
+        });
 
-        CardView recentAlertCard2 = findViewById(R.id.recentAlertCard2);
-        recentAlertCard2.setOnClickListener(v -> openPatientDetails("Jane Smith", "ICU-02", "Warning", "Low SpO2", "B405", "2024-07-28", "Dr. Jones", "90 bpm", "85%"));
+        CardView recentAlertCard2 = findViewById(R.id.recentAlertCard2); // Warning: Priya Sharma
+        recentAlertCard2.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, AlertDetailsActivity.class);
+            intent.putExtra("patientName", "Priya Sharma");
+            intent.putExtra("bedId", "ICU-02");
+            intent.putExtra("alertType", "High Respiratory Rate");
+            intent.putExtra("time", "10:42 AM");
+            startActivity(intent);
+        });
 
-        CardView recentAlertCard3 = findViewById(R.id.recentAlertCard3);
-        recentAlertCard3.setOnClickListener(v -> openPatientDetails("Robert Johnson", "NICU-01", "Critical", "High Heart Rate", "N101", "2024-07-28", "Dr. Williams", "180 bpm", "95%"));
+        CardView recentAlertCard3 = findViewById(R.id.recentAlertCard3); // Critical: Arjun Deshmukh
+        recentAlertCard3.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, CriticalAlertActivity.class);
+            intent.putExtra("patientName", "Arjun Deshmukh");
+            intent.putExtra("bedId", "NICU-01");
+            intent.putExtra("alertType", "High Pressure");
+            startActivity(intent);
+        });
 
-        CardView recentAlertCard4 = findViewById(R.id.recentAlertCard4);
-        recentAlertCard4.setOnClickListener(v -> openPatientDetails("Emily Davis", "PICU-03", "Warning", "Irregular Rhythm", "P202", "2024-07-28", "Dr. Brown", "110 bpm", "93%"));
+        CardView recentAlertCard4 = findViewById(R.id.recentAlertCard4); // Warning: Sneha Reddy
+        recentAlertCard4.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, AlertDetailsActivity.class);
+            intent.putExtra("patientName", "Sneha Reddy");
+            intent.putExtra("bedId", "PICU-03");
+            intent.putExtra("alertType", "Irregular Rhythm");
+            intent.putExtra("time", "10:42 AM");
+            startActivity(intent);
+        });
 
 
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
@@ -82,7 +108,7 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.navigation_alerts) {
-                startActivity(new Intent(HomeActivity.this, ViewAlertsActivity.class));
+                startActivity(new Intent(HomeActivity.this, AlertsOverviewActivity.class));
                 finish();
                 return true;
             } else if (itemId == R.id.navigation_settings) {
@@ -92,19 +118,5 @@ public class HomeActivity extends AppCompatActivity {
             }
             return false;
         });
-    }
-
-    private void openPatientDetails(String name, String id, String status, String diagnosis, String bed, String admission, String physician, String heartRate, String spo2) {
-        Intent intent = new Intent(this, PatientDetailsActivity.class);
-        intent.putExtra("patientName", name);
-        intent.putExtra("patientId", id);
-        intent.putExtra("patientStatus", status);
-        intent.putExtra("diagnosis", diagnosis);
-        intent.putExtra("bed", bed);
-        intent.putExtra("admission", admission);
-        intent.putExtra("physician", physician);
-        intent.putExtra("heartRate", heartRate);
-        intent.putExtra("spo2", spo2);
-        startActivity(intent);
     }
 }

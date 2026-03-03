@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.graphics.Color;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -63,7 +64,7 @@ public class PatientsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patients);
 
         if (patients.isEmpty()) {
-            // Updated with Indian Names
+            // Adding 20 varied patients
             patients.add(new Patient("Rajesh Kumar", "P001", "Critical", "Severe ARDS", "ICU-01", "Oct 12, 2023", "Dr. Wilson", "102 bpm", "94%", "Male", "65 y"));
             patients.add(new Patient("Priya Sharma", "P002", "Warning", "Acute COPD", "ICU-02", "Oct 15, 2023", "Dr. Adams", "90 bpm", "96%", "Female", "54 y"));
             patients.add(new Patient("Amit Patel", "P003", "Normal", "Post-Op Recovery", "ICU-03", "Oct 18, 2023", "Dr. Miller", "80 bpm", "98%", "Male", "72 y"));
@@ -74,7 +75,6 @@ public class PatientsActivity extends AppCompatActivity {
             patients.add(new Patient("Sunita Rao", "P008", "Warning", "Heart Failure", "CCU-02", "Oct 26, 2023", "Dr. Davis", "88 bpm", "93%", "Female", "68 y"));
             patients.add(new Patient("Sanjay Iyer", "P009", "Normal", "Routine Pre-Op", "Ward-05", "Oct 27, 2023", "Dr. Martinez", "72 bpm", "98%", "Male", "40 y"));
             patients.add(new Patient("Deepa Nair", "P010", "Critical", "Trauma", "ICU-07", "Oct 28, 2023", "Dr. Thompson", "110 bpm", "92%", "Female", "29 y"));
-
             patients.add(new Patient("Thomas Chacko", "P011", "Normal", "General Checkup", "Ward-02", "Oct 29, 2023", "Dr. Moore", "70 bpm", "99%", "Male", "50 y"));
             patients.add(new Patient("Kavita Joshi", "P012", "Warning", "Hypertension", "CCU-03", "Oct 30, 2023", "Dr. Taylor", "92 bpm", "95%", "Female", "62 y"));
             patients.add(new Patient("Arjun Deshmukh", "P013", "Critical", "Renal Failure", "ICU-08", "Oct 31, 2023", "Dr. Anderson", "105 bpm", "90%", "Male", "55 y"));
@@ -238,13 +238,13 @@ public class PatientsActivity extends AppCompatActivity {
 
     private void updateButtonBackgrounds(Button selectedButton) {
         allButton.setBackgroundResource(R.drawable.filter_button_unselected_background);
-        allButton.setTextColor(getResources().getColor(android.R.color.black));
+        allButton.setTextColor(Color.BLACK);
         criticalButton.setBackgroundResource(R.drawable.filter_button_unselected_background);
-        criticalButton.setTextColor(getResources().getColor(android.R.color.black));
+        criticalButton.setTextColor(Color.BLACK);
         stableButton.setBackgroundResource(R.drawable.filter_button_unselected_background);
-        stableButton.setTextColor(getResources().getColor(android.R.color.black));
+        stableButton.setTextColor(Color.BLACK);
 
         selectedButton.setBackgroundResource(R.drawable.filter_button_selected_background);
-        selectedButton.setTextColor(getResources().getColor(android.R.color.white));
+        selectedButton.setTextColor(Color.WHITE);
     }
 }

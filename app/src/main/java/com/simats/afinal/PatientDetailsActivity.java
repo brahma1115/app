@@ -48,8 +48,29 @@ public class PatientDetailsActivity extends AppCompatActivity {
             intent.putExtra("bed", bedValue.getText().toString());
             intent.putExtra("admission", admissionValue.getText().toString());
             intent.putExtra("physician", physicianValue.getText().toString());
-            intent.putExtra("isEditing", true); // Flag to tell AddPatientActivity we are editing
+            intent.putExtra("isEditing", true);
             startActivityForResult(intent, EDIT_PATIENT_REQUEST);
+        });
+
+        // AI-Powered Assessment Card click listener
+        CardView aiAssessmentCard = findViewById(R.id.aiAssessmentCard);
+        aiAssessmentCard.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDetailsActivity.this, AiRiskAssessmentActivity.class);
+            startActivity(intent);
+        });
+
+        // Ventilator Status Card click listener - Navigating to Monitor Bed
+        CardView ventilatorStatusCard = findViewById(R.id.ventilatorStatusCard);
+        ventilatorStatusCard.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDetailsActivity.this, MonitorBedActivity.class);
+            intent.putExtra("patientName", patientNameTextView.getText().toString());
+            intent.putExtra("bedId", bedValue.getText().toString());
+            // passing ventilator specific details as well
+            intent.putExtra("peep", "8.0");
+            intent.putExtra("fio2", "60%");
+            intent.putExtra("rr", "24");
+            intent.putExtra("mode", "AC/VC");
+            startActivity(intent);
         });
 
         Button viewVitalsButton = findViewById(R.id.viewVitalsButton);
@@ -93,7 +114,6 @@ public class PatientDetailsActivity extends AppCompatActivity {
             admissionValue.setText(intent.getStringExtra("admission"));
             physicianValue.setText(intent.getStringExtra("physician"));
             
-            // Set defaults if null (for heart rate and spo2 which might not be in edit intent)
             String hr = intent.getStringExtra("heartRate");
             String s2 = intent.getStringExtra("spo2");
             if (hr != null) heartRateValue.setText(hr);
@@ -105,7 +125,6 @@ public class PatientDetailsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == EDIT_PATIENT_REQUEST && resultCode == RESULT_OK && data != null) {
-            // Update UI with new data returned from AddPatientActivity
             updateUI(data);
         }
     }

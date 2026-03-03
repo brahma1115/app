@@ -7,63 +7,77 @@
     android:background="#F8F9FA"
     tools:context=".ViewAlertsActivity">
 
+    <!-- Header / Filter Buttons -->
+    <LinearLayout
+        android:id="@+id/filterHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#F0F4FF">
+
+        <Button
+            android:id="@+id/allButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="All"
+            android:textAllCaps="false"
+            android:background="@drawable/filter_button_selected_background"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/criticalButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Critical"
+            android:textAllCaps="false"
+            android:background="@drawable/filter_button_unselected_background"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/warningButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Warning"
+            android:textAllCaps="false"
+            android:background="@drawable/filter_button_unselected_background"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/filterHeader">
 
         <LinearLayout
+            android:id="@+id/alertsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Header -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/status_normal_background"
-                android:padding="8dp">
-
-                <Button
-                    android:id="@+id/activeButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Active"
-                    android:maxLines="1" />
-
-                <Button
-                    android:id="@+id/historyButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="History"
-                    android:maxLines="1" />
-
-                <Button
-                    android:id="@+id/escalatedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Escalated"
-                    android:maxLines="1" />
-            </LinearLayout>
-
-            <!-- Alert Cards -->
+            <!-- Alert Card 1: Rajesh Kumar (Critical) -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/alertCard1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardCornerRadius="8dp">
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                android:tag="Critical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <View
-                        android:layout_width="4dp"
+                        android:layout_width="6dp"
                         android:layout_height="match_parent"
+                        android:minHeight="120dp"
                         android:background="#DC3545"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -75,56 +89,66 @@
                             android:layout_height="wrap_content"
                             android:text="High Pressure"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"/>
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2m ago"
-                            android:layout_alignParentEnd="true"/>
+                            android:layout_alignParentEnd="true"
+                            android:textColor="#757575"/>
                         <TextView
                             android:id="@+id/patientDetails1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="John Doe • ICU-01"
-                            android:layout_below="@id/alertTitle1"/>
+                            android:text="Rajesh Kumar • ICU-01"
+                            android:layout_below="@id/alertTitle1"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#616161"/>
                         <TextView
+                            android:id="@+id/status1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Critical"
+                            android:text="● Critical"
                             android:textColor="#DC3545"
                             android:background="@drawable/status_critical_background"
-                            android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
                             android:layout_below="@id/patientDetails1"
-                            android:layout_marginTop="8dp"
-                            android:drawableStart="@drawable/dot_critical"
-                            android:drawablePadding="4dp"/>
+                            android:layout_marginTop="16dp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="View Details"
+                            android:text="View Details →"
                             android:textColor="#007BFF"
-                            android:layout_below="@id/patientDetails1"
+                            android:layout_alignBottom="@id/status1"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginTop="8dp"/>
+                            android:textStyle="bold"/>
                     </RelativeLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Alert Card 2: Priya Sharma (Warning) -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/alertCard2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                android:tag="Warning">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <View
-                        android:layout_width="4dp"
+                        android:layout_width="6dp"
                         android:layout_height="match_parent"
+                        android:minHeight="120dp"
                         android:background="#FFC107"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -136,57 +160,67 @@
                             android:layout_height="wrap_content"
                             android:text="High RR"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"/>
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="15m ago"
-                            android:layout_alignParentEnd="true"/>
+                            android:layout_alignParentEnd="true"
+                            android:textColor="#757575"/>
                         <TextView
                             android:id="@+id/patientDetails2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Jane Smith • ICU-02"
-                            android:layout_below="@id/alertTitle2"/>
+                            android:text="Priya Sharma • ICU-02"
+                            android:layout_below="@id/alertTitle2"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#616161"/>
                         <TextView
+                            android:id="@+id/status2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Warning"
+                            android:text="● Warning"
                             android:textColor="#FFC107"
                             android:background="@drawable/status_warning_background"
-                            android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
                             android:layout_below="@id/patientDetails2"
-                            android:layout_marginTop="8dp"
-                            android:drawableStart="@drawable/dot_warning"
-                            android:drawablePadding="4dp"/>
+                            android:layout_marginTop="16dp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="View Details"
+                            android:text="View Details →"
                             android:textColor="#007BFF"
-                            android:layout_below="@id/patientDetails2"
+                            android:layout_alignBottom="@id/status2"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginTop="8dp"/>
+                            android:textStyle="bold"/>
                     </RelativeLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Alert Card 3: Sneha Reddy (Critical) -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/alertCard3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                android:tag="Critical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <View
-                        android:layout_width="4dp"
+                        android:layout_width="6dp"
                         android:layout_height="match_parent"
-                        android:background="#FFC107"/>
+                        android:minHeight="120dp"
+                        android:background="#DC3545"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -195,59 +229,69 @@
                             android:id="@+id/alertTitle3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Low Battery"
+                            android:text="Low SpO2"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"/>
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1h ago"
-                            android:layout_alignParentEnd="true"/>
+                            android:text="30m ago"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="#757575"/>
                         <TextView
                             android:id="@+id/patientDetails3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Device V-882 • ICU-05"
-                            android:layout_below="@id/alertTitle3"/>
+                            android:text="Sneha Reddy • ICU-04"
+                            android:layout_below="@id/alertTitle3"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#616161"/>
                         <TextView
+                            android:id="@+id/status3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Warning"
-                            android:textColor="#FFC107"
-                            android:background="@drawable/status_warning_background"
-                            android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
+                            android:text="● Critical"
+                            android:textColor="#DC3545"
+                            android:background="@drawable/status_critical_background"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
                             android:layout_below="@id/patientDetails3"
-                            android:layout_marginTop="8dp"
-                            android:drawableStart="@drawable/dot_warning"
-                            android:drawablePadding="4dp"/>
+                            android:layout_marginTop="16dp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="View Details"
+                            android:text="View Details →"
                             android:textColor="#007BFF"
-                            android:layout_below="@id/patientDetails3"
+                            android:layout_alignBottom="@id/status3"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginTop="8dp"/>
+                            android:textStyle="bold"/>
                     </RelativeLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Alert Card 4: Vikram Singh (Warning) -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/alertCard4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                android:tag="Warning">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <View
-                        android:layout_width="4dp"
+                        android:layout_width="6dp"
                         android:layout_height="match_parent"
-                        android:background="#007BFF"/>
+                        android:minHeight="120dp"
+                        android:background="#FFC107"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -256,48 +300,194 @@
                             android:id="@+id/alertTitle4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Calibration Due"
+                            android:text="High Temp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"/>
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="2h ago"
-                            android:layout_alignParentEnd="true"/>
+                            android:text="45m ago"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="#757575"/>
                         <TextView
                             android:id="@+id/patientDetails4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="System • -"
-                            android:layout_below="@id/alertTitle4"/>
+                            android:text="Vikram Singh • ICU-05"
+                            android:layout_below="@id/alertTitle4"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#616161"/>
+                        <TextView
+                            android:id="@+id/status4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="● Warning"
+                            android:textColor="#FFC107"
+                            android:background="@drawable/status_warning_background"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:layout_below="@id/patientDetails4"
+                            android:layout_marginTop="16dp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Info"
+                            android:text="View Details →"
                             android:textColor="#007BFF"
-                            android:background="@drawable/status_info_background"
-                            android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
-                            android:layout_below="@id/patientDetails4"
-                            android:layout_marginTop="8dp"
-                            android:drawableStart="@drawable/dot_info"
-                            android:drawablePadding="4dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="View Details"
-                            android:textColor="#007BFF"
-                            android:layout_below="@id/patientDetails4"
+                            android:layout_alignBottom="@id/status4"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginTop="8dp"/>
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Alert Card 5: Anjali Gupta (Critical) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/alertCard5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                android:tag="Critical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="match_parent"
+                        android:minHeight="120dp"
+                        android:background="#DC3545"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp">
+                        <TextView
+                            android:id="@+id/alertTitle5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Low Pulse"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1h ago"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="#757575"/>
+                        <TextView
+                            android:id="@+id/patientDetails5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Anjali Gupta • ICU-06"
+                            android:layout_below="@id/alertTitle5"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#616161"/>
+                        <TextView
+                            android:id="@+id/status5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="● Critical"
+                            android:textColor="#DC3545"
+                            android:background="@drawable/status_critical_background"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:layout_below="@id/patientDetails5"
+                            android:layout_marginTop="16dp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View Details →"
+                            android:textColor="#007BFF"
+                            android:layout_alignBottom="@id/status5"
+                            android:layout_alignParentEnd="true"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Alert Card 6: Rahul Verma (Warning) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/alertCard6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                android:tag="Warning">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="match_parent"
+                        android:minHeight="120dp"
+                        android:background="#FFC107"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp">
+                        <TextView
+                            android:id="@+id/alertTitle6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apnea Alert"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2h ago"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="#757575"/>
+                        <TextView
+                            android:id="@+id/patientDetails6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rahul Verma • ICU-07"
+                            android:layout_below="@id/alertTitle6"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#616161"/>
+                        <TextView
+                            android:id="@+id/status6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="● Warning"
+                            android:textColor="#FFC107"
+                            android:background="@drawable/status_warning_background"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:layout_below="@id/patientDetails6"
+                            android:layout_marginTop="16dp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View Details →"
+                            android:textColor="#007BFF"
+                            android:layout_alignBottom="@id/status6"
+                            android:layout_alignParentEnd="true"
+                            android:textStyle="bold"/>
                     </RelativeLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
-
     </ScrollView>
 
 </RelativeLayout>

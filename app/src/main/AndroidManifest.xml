@@ -56,6 +56,8 @@
         <activity android:name=".PatientHistoryActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ReportsAndDocumentsActivity" />
+        <activity android:name=".AlertDetailsActivity" />
+        <activity android:name=".CriticalAlertActivity" />
     </application>
 
 </manifest>
