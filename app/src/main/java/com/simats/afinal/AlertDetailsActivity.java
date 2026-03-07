@@ -1,5 +1,6 @@
 package com.simats.afinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ public class AlertDetailsActivity extends AppCompatActivity {
         TextView limitValueTv = findViewById(R.id.limitValue);
         TextView probableCauseTv = findViewById(R.id.probableCauseText);
         TextView suggestedActionTv = findViewById(R.id.suggestedActionText);
+        TextView viewFullAiDetails = findViewById(R.id.viewFullAiDetails);
 
         // Update UI with dynamic data if available
         if (patientName != null && bedId != null) {
@@ -43,6 +45,14 @@ public class AlertDetailsActivity extends AppCompatActivity {
         if (time != null) {
             triggeredTimeTv.setText("Triggered: " + time + " (15m ago)");
         }
+
+        // View Full AI Details Click Listener
+        viewFullAiDetails.setOnClickListener(v -> {
+            Intent intent = new Intent(AlertDetailsActivity.this, SmartAlarmAIActivity.class);
+            intent.putExtra("patientName", patientName);
+            intent.putExtra("bedId", bedId);
+            startActivity(intent);
+        });
 
         // Custom details for different alerts
         if ("Irregular Rhythm".equals(alertType)) {
@@ -59,7 +69,11 @@ public class AlertDetailsActivity extends AppCompatActivity {
 
         Button escalateButton = findViewById(R.id.escalateButton);
         escalateButton.setOnClickListener(v -> {
-            Toast.makeText(this, "Escalated to Physician", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(AlertDetailsActivity.this, EscalateAlertActivity.class);
+            intent.putExtra("patientName", patientName);
+            intent.putExtra("bedId", bedId);
+            intent.putExtra("alertType", alertType);
+            startActivity(intent);
         });
     }
 }

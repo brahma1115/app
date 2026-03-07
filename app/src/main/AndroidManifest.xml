@@ -58,6 +58,7 @@
         <activity android:name=".ReportsAndDocumentsActivity" />
         <activity android:name=".AlertDetailsActivity" />
         <activity android:name=".CriticalAlertActivity" />
+        <activity android:name=".EscalateAlertActivity" />
     </application>
 
 </manifest>

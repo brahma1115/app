@@ -1,5 +1,6 @@
 package com.simats.afinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,7 +42,11 @@ public class CriticalAlertActivity extends AppCompatActivity {
 
         Button escalateButton = findViewById(R.id.escalateButton);
         escalateButton.setOnClickListener(v -> {
-            Toast.makeText(this, "Escalating / Calling Code...", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(CriticalAlertActivity.this, EscalateAlertActivity.class);
+            intent.putExtra("patientName", patientName);
+            intent.putExtra("bedId", bedId);
+            intent.putExtra("alertType", alertType);
+            startActivity(intent);
         });
     }
 }

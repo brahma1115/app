@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FB"
+    tools:context=".EscalateAlertActivity">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_centerVertical="true"
+            app:tint="#2D3748" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Escalate Alert"
+            android:textColor="#1A202C"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Escalating Status Banner -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFF0F0">
+
+                <TextView
+                    android:id="@+id/escalationHeaderText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="Escalating: High Pressure Alert (Bed ICU-01)"
+                    android:textColor="#D32F2F"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Staff Card 1: Dr. Sunita Verma -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/avatar1"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/img_61"
+                        android:layout_centerVertical="true"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toEndOf="@id/avatar1"
+                        android:layout_marginStart="16dp"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="On-Call Resident"
+                            android:textColor="#718096"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dr. Sunita Verma"
+                            android:textColor="#1A202C"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="2dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="● Available"
+                            android:textColor="#4CAF50"
+                            android:textSize="13sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true">
+
+                        <ImageView
+                            android:id="@+id/chatDrSunita"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:src="@drawable/img_63"
+                            android:padding="10dp"
+                            android:background="@drawable/circular_background"
+                            android:backgroundTint="#F0F4FF"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+                        <ImageView
+                            android:id="@+id/callDrSunita"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:src="@drawable/ic_phone"
+                            android:padding="10dp"
+                            android:background="@drawable/circular_background"
+                            android:backgroundTint="#F0FFF0"
+                            app:tint="#4CAF50"
+                            android:clickable="true"
+                            android:focusable="true" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Staff Card 2: Nurse Lakshmi -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/avatar2"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/img_61"
+                        android:layout_centerVertical="true"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toEndOf="@id/avatar2"
+                        android:layout_marginStart="16dp"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Senior Nurse"
+                            android:textColor="#718096"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nurse Lakshmi"
+                            android:textColor="#1A202C"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="2dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="● Busy"
+                            android:textColor="#F59E0B"
+                            android:textSize="13sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true">
+
+                        <ImageView
+                            android:id="@+id/chatNurseLakshmi"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:src="@drawable/img_63"
+                            android:padding="10dp"
+                            android:background="@drawable/circular_background"
+                            android:backgroundTint="#F0F4FF"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+                        <ImageView
+                            android:id="@+id/callNurseLakshmi"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:src="@drawable/ic_phone"
+                            android:padding="10dp"
+                            android:background="@drawable/circular_background"
+                            android:backgroundTint="#F0FFF0"
+                            app:tint="#4CAF50"
+                            android:clickable="true"
+                            android:focusable="true" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Staff Card 3: Rajesh Sharma -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/avatar3"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/img_61"
+                        android:layout_centerVertical="true"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toEndOf="@id/avatar3"
+                        android:layout_marginStart="16dp"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Respiratory Therapist"
+                            android:textColor="#718096"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rajesh Sharma"
+                            android:textColor="#1A202C"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="2dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="● Available"
+                            android:textColor="#4CAF50"
+                            android:textSize="13sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true">
+
+                        <ImageView
+                            android:id="@+id/chatRajesh"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:src="@drawable/img_63"
+                            android:padding="10dp"
+                            android:background="@drawable/circular_background"
+                            android:backgroundTint="#F0F4FF"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+                        <ImageView
+                            android:id="@+id/callRajesh"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:src="@drawable/ic_phone"
+                            android:padding="10dp"
+                            android:background="@drawable/circular_background"
+                            android:backgroundTint="#F0FFF0"
+                            app:tint="#4CAF50"
+                            android:clickable="true"
+                            android:focusable="true" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
